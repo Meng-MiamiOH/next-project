@@ -1,6 +1,7 @@
 import { getEventById } from "@/dummy-data";
 import { useRouter } from "next/router";
 import { Fragment } from "react";
+import ErrorAlert from "@/components/ui/error-alert";
 import EventSummary from "@/components/event-detail/event-summary";
 import EventLogistics from "@/components/event-detail/event-logistics";
 import EventContent from "@/components/event-detail/event-content";
@@ -11,7 +12,11 @@ const EventDetailPage = () => {
   const event = getEventById(eventId);
 
   if (!event) {
-    return <p>No such event</p>;
+    return (
+      <ErrorAlert>
+        <p>No such event</p>
+      </ErrorAlert>
+    );
   }
 
   return (
